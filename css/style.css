@@ -583,6 +583,7 @@ header hgroup button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  margin: 0 20px 0px 0;
   font-size: 1.1rem;
   text-transform: uppercase;
   font-style: italic;
