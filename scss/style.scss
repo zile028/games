@@ -1,0 +1,312 @@
+@import "starter";
+@import "mixins";
+
+// basicStyle
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: $white;
+    cursor: pointer;
+    span {
+        font-style: italic;
+        color: $accents;
+        text-shadow: 2px -2px 5px $white;
+    }
+    &:hover {
+        $transition: color $transition;
+        color: $accents;
+    }
+}
+.navList {
+    @include flex(flex-end, center);
+    li {
+        margin-left: 50px;
+        font-weight: 500;
+        @media (max-width: 767px) {
+            margin-left: 0px;
+        }
+        a {
+            transition: $transition;
+            &:hover {
+                text-shadow: $textShadow;
+            }
+        }
+    }
+}
+.social {
+    color: $lightGray;
+    text-align: right;
+    p {
+        display: inline-block;
+    }
+    a {
+        margin-left: 10px;
+        i {
+            transition: $transition;
+            &:hover {
+                color: $accents;
+                transform: rotate(45deg);
+            }
+        }
+    }
+}
+.postText {
+    flex: 0 0 30%;
+    h5 {
+        font-size: 1rem;
+        span {
+            color: $accents;
+        }
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    p {
+        color: $lightGray;
+        margin: 30px 0;
+    }
+    a {
+        text-transform: uppercase;
+        transition: $transition;
+        &::after {
+            content: "\f101";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: $accents;
+            margin-left: 5px;
+            transition: $transition;
+        }
+        &:hover {
+            color: $accents;
+            &::after {
+                margin-left: 15px;
+            }
+        }
+    }
+}
+
+// header
+header {
+    background-image: linear-gradient(to right, rgba($accents, 0.7), rgba($accents, 0.2)), url(../img/header.jpg);
+    @include bgBasic;
+    height: 95vh;
+    @include flex(flex-start, center, column);
+    border-bottom: 5px solid $accents;
+    article {
+        padding: 20px 0;
+        @extend .social;
+    }
+    nav {
+        @include flex(space-between, center);
+        background-color: $black;
+        padding: 20px;
+        box-shadow: 0 0 10px 2px $accents;
+        @media (max-width: 767px) {
+            flex-direction: column;
+        }
+        ul {
+            @extend .navList;
+            @media (max-width: 767px) {
+                justify-content: space-between;
+                width: 100%;
+                li {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    hgroup {
+        @include flex(center, center, column);
+        text-align: center;
+        flex-grow: 1;
+        h1 {
+            font-weight: 800;
+            font-size: 10rem;
+            @media (max-width: 767px) {
+                font-size: 5rem;
+            }
+        }
+        p {
+            color: $lightGray;
+            font-size: 1.5rem;
+            font-weight: 500;
+            @media (max-width: 767px) {
+                font-size: 1.2rem;
+                width: 90%;
+            }
+        }
+        button {
+            margin-top: 35px;
+        }
+    }
+}
+
+// game
+.game {
+    background-color: $darkBlue;
+    padding: $padding;
+    article {
+        @include flex(space-between, flex-start);
+        @media (max-width: 767px) {
+            flex-direction: column;
+        }
+        div {
+            @extend .postText;
+            @media (max-width: 767px) {
+                margin-bottom: 20px;
+                border-bottom: 1px solid $lightGray;
+            }
+        }
+    }
+}
+// blog
+.blog {
+    @include flex(space-between, flex-start);
+    padding: $padding;
+    article {
+        flex: 0 0 68%;
+        @include flex(flex-start, space-between, column);
+        @media (max-width: 767px) {
+            flex: 0 0 100%;
+        }
+        h2 {
+            width: 100%;
+            font-size: 2.7rem;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        & > div {
+            flex: 0 0 100%;
+            @include flex(space-between, center);
+            @media (max-width: 767px) {
+                flex-direction: column;
+                border-bottom: 1px solid $lightGray;
+            }
+            margin-bottom: 30px;
+            div {
+                &:first-child {
+                    flex: 0 0 39%;
+                    @media (max-width: 767px) {
+                        flex: 0 0 100%;
+                    }
+                    img {
+                        height: 100%;
+                    }
+                }
+                &:last-child {
+                    flex: 0 0 58%;
+                    @extend .postText;
+                    padding: 30px 0;
+                    @media (max-width: 767px) {
+                        flex: 0 0 100%;
+                        padding: 20px 0;
+                    }
+                    p {
+                        color: $lightGray;
+                        margin: 10px 0;
+                    }
+                }
+            }
+        }
+    }
+    aside {
+        flex: 0 0 27%;
+        background-color: rgba($accents, 0.3);
+        padding: 30px;
+        @media (max-width: 767px) {
+            flex: 0 0 100%;
+        }
+        h3 {
+            font-size: 2rem;
+        }
+        ul {
+            li {
+                text-transform: uppercase;
+                font-style: italic;
+                font-weight: 500;
+                line-height: 2;
+            }
+        }
+        div {
+            background-color: $lightGray;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            p {
+                color: $darkBlue;
+                font-weight: 500;
+                margin-top: 10px;
+            }
+            h4 {
+                font-size: 2rem;
+                color: $darkBlue;
+                text-shadow: 0 0 5px $accents;
+            }
+            button {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+// subscribe
+.subscribe {
+    padding: $padding;
+    background-color: $lightGray;
+    text-align: center;
+    h2 {
+        font-size: 3rem;
+        color: $darkBlue;
+        font-weight: 700;
+        @media (max-width: 767px) {
+            font-size: 2.5rem;
+            line-height: 1.5;
+        }
+    }
+    form {
+        margin: 0 auto;
+        width: 30%;
+        @include flex(space-between, center);
+        @media (max-width: 767px) {
+            width: 90%;
+            justify-content: center;
+        }
+        input {
+            padding: 10px 20px;
+            flex: 1;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-style: italic;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid $pink;
+            outline: none;
+            @media (max-width: 767px) {
+                margin: 0 0 20px 0;
+                flex: 0 0 100%;
+            }
+        }
+    }
+}
+
+// footer
+
+footer {
+    text-align: center;
+    padding: $padding;
+    background-color: $violet;
+    ul {
+        @extend .navList;
+        justify-content: center;
+        margin: 30px 0;
+        @media (max-width: 767px) {
+            justify-content: space-between;
+            width: 90%;
+            margin: 30px auto;
+        }
+    }
+    article {
+        @extend .social;
+        text-align: center;
+    }
+}
